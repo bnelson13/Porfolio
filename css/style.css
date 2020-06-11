@@ -174,15 +174,6 @@ body {
     justify-content: space-between;
     margin: 80px 60px;
     text-align: center;
-    opacity: .1;
-}
-
-.portfolio-cards-active {
-    display: flex;
-    justify-content: space-between;
-    margin: 80px 60px;
-    text-align: center;
-    /* transform: scale(1.05); */
     opacity: 1;
 }
 
