@@ -47,3 +47,54 @@ topButton.addEventListener('click', function (e) {
     }
     scrollUp();
 })
+
+/* Show Clipboard tip in Contact Section */
+//Get clipboard icons and Copy to Clipboard words
+const emailClip = document.querySelector('#clipboard-icon-email')
+const emailClipWord = document.querySelector('#clipboard-email-words')
+const phoneClip = document.querySelector('#clipboard-icon-phone')
+const phoneClipWord = document.querySelector('#clipboard-phone-words')
+const emailText = document.querySelector('#emailLink')
+const phoneNumber = document.querySelector('#phoneNumber')
+
+// Set up On Mouse Over events
+emailClip.addEventListener('mouseover', function(event) {
+    emailClipWord.className = ('clipboard-words-active');
+});
+phoneClip.addEventListener('mouseover', function(event) {
+    phoneClipWord.className = ('clipboard-words-active');
+});
+
+// Set up On Mouse Out events
+emailClip.addEventListener('mouseout', function(event) {
+    emailClipWord.className = ('clipboard-words');
+});
+phoneClip.addEventListener('mouseout', function(event) {
+    phoneClipWord.className = ('clipboard-words');
+});
+
+// Set up On Mouse Click events
+emailClip.addEventListener('click', function(event) {
+    let temp = document.createElement("textarea");
+    document.body.appendChild(temp);
+    temp.value= emailText.innerText
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+    emailClipWord.style.color = 'green';
+    setTimeout(function() {
+        emailClipWord.style.color = 'black';
+    }, 1000);
+})
+phoneClip.addEventListener('click', function(event) {
+    let temp = document.createElement("textarea");
+    document.body.appendChild(temp);
+    temp.value= phoneNumber.innerText.replace('303.884.5392', '3038845392')
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+    phoneClipWord.style.color = 'green';
+    setTimeout(function() {
+        phoneClipWord.style.color = 'black';
+    }, 1000);
+})
