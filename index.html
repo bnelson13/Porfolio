@@ -18,7 +18,16 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
+
+    <!-- Welcome SVG Section -->
+    <svg id="svg-frame" width="100%" height="800px" preserveAspectRatio="none" viewBox="0 0 100 100">
+        <path id="path1" d="M10 8 L10 33 L90 33" fill="none" stroke="white" stroke-width=".1" stroke-dasharray="105" stroke-dashoffset="105"/>
+        <path id="path2" d="M90 33 L90 8 L10 8" fill="none" stroke="white" stroke-width=".1" stroke-dasharray="105" stroke-dashoffset="105"/>
+        <path id="path3" d="M73 0 L73 50 L100 50" fill="none" stroke="white" stroke-width=".1" stroke-dasharray="77" stroke-dashoffset="77"/>
+    </svg>
+
     <!-- Welcome Section -->
+    <div class="welcome-background"></div>
     <div class="welcome-section">
 
         <!-- Navigation Bar -->
@@ -38,6 +47,13 @@
         </div>
 
     </div>
+
+    <!-- About SVG Section -->
+    <svg id="svg-frame" width="100%" height="800px" preserveAspectRatio="none" viewBox="0 0 100 100">
+        <path id="path4" d="M100 10 L50 10 L50 15" fill="none" stroke="black" stroke-width=".1" stroke-dasharray="55" stroke-dashoffset="55"/>
+        <path id="path5" d="M100 90 L50 90 L50 32" fill="none" stroke="black" stroke-width=".1" stroke-dasharray="108" stroke-dashoffset="108"/>
+        <path id="path6" d="M0 20 L35 20 L35 40 L0 40" fill="none" stroke="black" stroke-width=".1" stroke-dasharray="90" stroke-dashoffset="90"/>
+    </svg>
 
     <!-- About Section -->
     <div id="about-section">
@@ -187,7 +203,6 @@
             </div>
             <div class="contact-part">
                 <div class="clipboard" id="clipboard-phone">
-                    <img id="clipboard-icon-phone"  src="/img/copy.png" alt="Clipboard Icon">
                     <div id="clipboard-phone-words" class="clipboard-words">
                         <p>Copy to Clipboard</p>
                     </div>
