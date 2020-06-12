@@ -79,9 +79,7 @@ emailClip.addEventListener('click', function(event) {
     }, 1000);
 })
 
-console.log(document.querySelector('#path4').getTotalLength());
-console.log(document.querySelector('#path5').getTotalLength());
-console.log(document.querySelector('#path6').getTotalLength());
+// console.log(document.querySelector('#path4').getTotalLength());
 /* Animate SVG Lines*/
 // Select all the different paths
 const path1 = document.querySelector('#path1');
@@ -90,6 +88,14 @@ const path3 = document.querySelector('#path3');
 const path4 = document.querySelector('#path4');
 const path5 = document.querySelector('#path5');
 const path6 = document.querySelector('#path6');
+const path7 = document.querySelector('#path7');
+const path8 = document.querySelector('#path8');
+const path9 = document.querySelector('#path9');
+const path10 = document.querySelector('#path10');
+const path11 = document.querySelector('#path11');
+const path12 = document.querySelector('#path12');
+
+console.log(path9.getTotalLength());
 
 // Load the welcome section paths on DOM being loaded
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -98,6 +104,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
         path1.setAttribute("class","animate-path");
         path2.setAttribute("class","animate-path");
         path3.setAttribute("class","animate-path");
+        path9.setAttribute("class","animate-path-2");
+        path10.setAttribute("class","animate-path-2");
+        path11.setAttribute("class","animate-path-2");
+        path12.setAttribute("class","animate-path-2");
     }, 10);
 })
 
+// Load the About Paths when scrolled to
+const aboutSection = document.querySelector('#about-section');
+let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: .8
+};
+function drawAboutLines(entries) {
+    entries.map((entry) => {
+        if (entry.isIntersecting) {
+            path4.setAttribute("class","animate-path");
+            path5.setAttribute("class","animate-path");
+            path6.setAttribute("class","animate-path");
+        }
+    });
+}
+const aboutObserver = new IntersectionObserver(drawAboutLines, options);
+aboutObserver.observe(aboutSection);
+
+// Load the Portofolio Paths when scrolled to
+const portfolioSection = document.querySelector('#portfolio-section');
+function drawPortfolioLines(entries) {
+    entries.map((entry) => {
+        if (entry.isIntersecting) {
+            path7.setAttribute("class","animate-path");
+            path8.setAttribute("class","animate-path");
+        }
+    });
+}
+const portfolioObserver = new IntersectionObserver(drawPortfolioLines, options);
+portfolioObserver.observe(portfolioSection);
