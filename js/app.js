@@ -79,12 +79,15 @@ emailClip.addEventListener('click', function(event) {
     }, 1000);
 })
 
-// console.log(document.querySelector('#path4').getTotalLength());
+/* Test for path length to determine dash array and offsest for animation*/
+//console.log(document.querySelector('#path3').getTotalLength());
+
 /* Animate SVG Lines*/
 // Select all the different paths
 const path1 = document.querySelector('#path1');
 const path2 = document.querySelector('#path2');
 const path3 = document.querySelector('#path3');
+const path3B = document.querySelector('#path3B');
 const path4 = document.querySelector('#path4');
 const path5 = document.querySelector('#path5');
 const path6 = document.querySelector('#path6');
@@ -94,30 +97,37 @@ const path9 = document.querySelector('#path9');
 const path10 = document.querySelector('#path10');
 const path11 = document.querySelector('#path11');
 const path12 = document.querySelector('#path12');
-
-console.log(path9.getTotalLength());
+const path13 = document.querySelector('#path13');
+const path14 = document.querySelector('#path14');
+const path15 = document.querySelector('#path15');
+const path16 = document.querySelector('#path16');
 
 // Load the welcome section paths on DOM being loaded
 document.addEventListener('DOMContentLoaded', (event) => {
     setTimeout(() => {
         document.body.offsetTop;
+        path3.setAttribute("class","animate-path");
+        path3B.setAttribute("class","animate-path");
+    }, 10);
+    setTimeout(() => {
         path1.setAttribute("class","animate-path");
         path2.setAttribute("class","animate-path");
-        path3.setAttribute("class","animate-path");
-        path9.setAttribute("class","animate-path-2");
-        path10.setAttribute("class","animate-path-2");
-        path11.setAttribute("class","animate-path-2");
-        path12.setAttribute("class","animate-path-2");
-    }, 10);
+    },3000);
 })
-
-// Load the About Paths when scrolled to
-const aboutSection = document.querySelector('#about-section');
+// Options for intersection observers
 let options = {
     root: null,
     rootMargin: "0px",
     threshold: .8
 };
+let options2 = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0
+};
+
+// Load & remove the About Paths in or out of view
+const aboutSection = document.querySelector('#about-section');
 function drawAboutLines(entries) {
     entries.map((entry) => {
         if (entry.isIntersecting) {
@@ -130,7 +140,19 @@ function drawAboutLines(entries) {
 const aboutObserver = new IntersectionObserver(drawAboutLines, options);
 aboutObserver.observe(aboutSection);
 
-// Load the Portofolio Paths when scrolled to
+function removeAboutLines(entries) {
+    entries.map((entry) => {
+        if (!entry.isIntersecting) {
+            path4.setAttribute("class","de-animate-path");
+            path5.setAttribute("class","de-animate-path");
+            path6.setAttribute("class","de-animate-path");
+        }
+    });
+}
+const aboutObserver2 = new IntersectionObserver(removeAboutLines, options2);
+aboutObserver2.observe(aboutSection);
+
+// Load & remove the Portfolio Paths in or out of view
 const portfolioSection = document.querySelector('#portfolio-section');
 function drawPortfolioLines(entries) {
     entries.map((entry) => {
@@ -142,3 +164,109 @@ function drawPortfolioLines(entries) {
 }
 const portfolioObserver = new IntersectionObserver(drawPortfolioLines, options);
 portfolioObserver.observe(portfolioSection);
+function removePortfolioLines(entries) {
+    entries.map((entry) => {
+        if (!entry.isIntersecting) {
+            path7.setAttribute("class","de-animate-path");
+            path8.setAttribute("class","de-animate-path");
+        }
+    });
+}
+const portfolioObserver2 = new IntersectionObserver(removePortfolioLines, options2);
+portfolioObserver2.observe(portfolioSection);
+
+// Load & remove the Resume Paths in or out of view
+const resumeSection = document.querySelector('#resume-section');
+function drawResumeLines(entries) {
+    entries.map((entry) => {
+        if (entry.isIntersecting) {
+            path9.setAttribute("class","animate-path");
+            path16.setAttribute("class","animate-path");
+            setTimeout(() => {
+                path15.setAttribute("class","animate-path");
+            }, 300);
+            setTimeout(() => {
+                path14.setAttribute("class","animate-path");
+            }, 600);
+            setTimeout(() => {
+                path13.setAttribute("class","animate-path");
+            }, 900);
+            setTimeout(() => {
+                path12.setAttribute("class","animate-path");
+            }, 1200);
+            setTimeout(() => {
+                path11.setAttribute("class","animate-path");
+            }, 1500);
+            setTimeout(() => {
+                path10.setAttribute("class","animate-path");
+            }, 2000);
+        }
+    });
+}
+
+function removeResumeLines(entries) {
+    entries.map((entry) => {
+        if (!entry.isIntersecting) {
+            path9.setAttribute("class","de-animate-path");
+            path10.setAttribute("class","de-animate-path");
+            path11.setAttribute("class","de-animate-path");
+            path12.setAttribute("class","de-animate-path");
+            path13.setAttribute("class","de-animate-path");
+            path14.setAttribute("class","de-animate-path");
+            path15.setAttribute("class","de-animate-path");
+            path16.setAttribute("class","de-animate-path");
+        }
+    });
+}
+
+const resumeObserver = new IntersectionObserver(drawResumeLines, options);
+resumeObserver.observe(resumeSection);
+const resumeObserver2 = new IntersectionObserver(removeResumeLines, options2);
+resumeObserver2.observe(resumeSection);
+
+
+/* Dynamic Media Queries */
+let resumeHolds = document.querySelectorAll('.resume-hold');
+let resumeEntries = document.querySelectorAll('.resume-entry');
+let workEntries = document.querySelectorAll('.resume-work');
+let educEntries = document.querySelectorAll('.resume-educ');
+let resumeIcons = document.querySelectorAll('.resume-icon');
+
+function narrowResume(x) {
+    //Smaller than 967 Px
+    if (x.matches) {
+        for (i = 0; i < 7; i++) {
+            resumeHolds[i].style.display='none';
+            resumeIcons[i].style.display='block';
+        }
+        for (i = 0; i < 3; i++) {
+            workEntries[i].style.textAlign='start';
+            workEntries[i].style.margin='30px 0 0 30%';
+        }
+        for (i = 0; i < 11; i++) {
+            educEntries[i].style.margin='30px 0 0 30%';
+        }
+        document.querySelector('.resume-sheet').style.gridTemplateColumns = '1fr'
+    } else {
+        for (i = 0; i < 7; i++) {
+            resumeHolds[i].style.display='block';
+            resumeIcons[i].style.display='none';
+        }
+        for (i = 0; i < 3; i++) {
+            workEntries[i].style.textAlign='end';
+            workEntries[i].style.margin='30px 50px 0 0';
+        }
+        for (i = 0; i < 11; i++) {
+            educEntries[i].style.margin='30px 0 0 50px';
+        }
+        document.querySelector('.resume-sheet').style.gridTemplateColumns = '1fr 1fr'
+    }
+  }
+  
+  var narWidthOne = window.matchMedia("(max-width: 967px)")
+
+  // Call listener function at run time
+  narrowResume(narWidthOne)
+
+  // Attach listener function on state changes
+  narWidthOne.addListener(narrowResume)

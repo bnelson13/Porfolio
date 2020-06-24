@@ -9,14 +9,17 @@
     position: absolute;
 }
 
+.svg-frame:first-of-type {
+    margin-top: -40px;    
+}
+
 .animate-path {
     opacity: 1;
     animation: dash 3s ease forwards;
 }
 
-.animate-path-2 {
-    opacity: 1;
-    animation: dash 3s ease infinite;
+.de-animate-path {
+    opacity: 0;
 }
   
 @keyframes dash {
@@ -43,19 +46,21 @@
 }
 
 .nav-menu {
-    width: 200px;
-    transform: translate(75vw, 10vh);
+    margin: 40px 0 0 0;
 }
 
 .nav-menu-list {
     list-style: none;
+    display: flex;
     line-height: 40px;
+    justify-content: center;
     position: relative;
 }
 
 .nav-menu-link {
     text-decoration: none;
     font-size: 22px;
+    margin: 40px;
     font-weight: 300;
     color: white;
     text-transform: uppercase;
@@ -82,8 +87,9 @@
 }
 
 .welcome-header {
-    transform: translate(10vw, 20vh);
-    width: 670px;
+    text-align: center;
+    width: 100%;
+    margin-top: 300px;
 }
 
 .welcome-name {
@@ -101,7 +107,7 @@
 
 #about-section {
     display: flex;
-    padding: 50px;
+    margin: 50px;
 }
 
 .about-left {
@@ -138,23 +144,25 @@
 .about-position {
     font-size: 40px;
     margin-top: 56px;
+    margin-bottom: 30px;
     letter-spacing: .2em;
 }
 
 .about-small-description {
     font-size: 20px;
-    padding: 0 0 0 80px;
     font-weight: 300;
+    margin: 0 0 10px 60px;
     line-height: 1.6em;
 }
 
 .experience-technologies {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 200px;
     font-size: 20px;
     gap: 5px 20px;
     text-transform: uppercase;
+    width: 250px;
+    margin: 10px 0 0 200px;
     grid-template-rows: repeat(6, 40px);
 }
 
@@ -187,7 +195,7 @@
 
 .portfolio-cards {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 80px 60px;
     text-align: center;
     opacity: 1;
@@ -220,84 +228,57 @@
 .portfolio-link a {
     color: black;
     text-decoration: none;
-}
-
-.portfolio-link-title:after {
-    content: '';
-    position: absolute;
-    width: 0; height: 1px;
-    display: block;
-    margin-top: -5px;
-    right: 0;
-    background: black;
-    transition: width 2s ease;
-    -webkit-transition: width 2s ease;
-}
-
-.portfolio-link-title:hover:after {
-    width: 100%;
-    left: 0;
-    background: white;
+    position: relative;
 }
 
 .portfolio-link-img {
     height: 40px;
 }
 
-#resume-section {
-    padding: 50px;
-    height: 600px;
-}
-
 .resume-sheet {
-    display: flex;
-    margin: 60px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 0;
     justify-content: center;
 }
 
-.resume-half {
-    margin: 0 60px;
-    width: 600px;
-}
-
-.resume-type-title {
+.resume-sheet > p {
     display: flex;
     justify-content: center;
     font-size: 40px;
+    margin-bottom: 10px;
 }
 
-.resume-entry * {
-    font-weight: 300;
-} 
 .resume-entry {
-    display: flex;
-    align-items: center;
-    height: 80px;
-    margin: 50px 0;
-}
-
-.resume-entry-img {
-    display: flex;
-    justify-content: center;
-    width: 140px;
-}
-
-.resume-entry-img img {
-    height: 50px;
-}
-
-.resume-entry-words {
     display: grid;
     gap: 5px;
+    align-items: center;
+    margin: 30px 0 0 0;
 }
 
-.resume-entry-words p:first-child {
-    font-size: 25px;
+.resume-work {
+    text-align: end;
+    margin: 30px 50px 0 0;
+}
+
+.resume-icon img{
+    height: 30px;
+    position: absolute;
+    transform: translate(-50px, 15px);
+}
+
+.resume-educ {
+    text-align: start;
+    margin: 30px 0 0 50px;
+}
+
+.resume-entry-place {
+    font-size: 22px;
     letter-spacing: -0.08em;
 }
 
-.resume-entry-words p:second-child {
-    font-size: 20px;
+.resume-entry-title {
+    font-size: 18px;
 }
 
 .contact-sheet {
@@ -335,8 +316,8 @@
 }
 
 .clipboard img {
-    height: 20px;
-    opacity: .4;
+    height: 18px;
+    opacity: .3;
     cursor: pointer;
 }
 
@@ -350,6 +331,7 @@
     transform: translate(-40%, -52px);
     border: .5px solid black;
     padding: 4px;
+    /* width: 30px; */
 }
 
 .clipboard-words-active {
@@ -366,6 +348,10 @@
 
 .clipboard-words-active p {
     font-size: 10px;
+}
+
+#clipboard-phone {
+    display: none;
 }
 
 .footer-section {
@@ -386,13 +372,18 @@
     color: white;
     right: 40px;
     z-index: 5;
-    border-radius: 50px;
-    text-align: center;
+    border-radius: 40px;
     font-size: 30px;
-    width: 50px;
+    width: 40px;
     border: 0px;
-    height: 50px;
+    height: 40px;
     background: black;
+}
+
+.topButtonActive > span {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
 }
 
 .topButtonActive:hover {
@@ -415,3 +406,268 @@
 #contact-section {
     padding: 50px;
 }
+
+@media screen and (max-width: 1268px) {
+    .experience-technologies {
+        width: 200px;
+        margin: 10px 0 0 160px;
+    }
+
+    .experience-technologies * {
+        font-size: 18px;
+    }
+    
+    .experience-technologies img {
+        height: 25px
+    }
+
+    .about-description {
+        font-size: 18px;
+        padding: 0 0 0 10px;
+    }
+
+    .about-small-description {
+        font-size: 18px;
+        margin: 0 0 10px 60px;
+    }
+
+    .about-right {
+        width: 500px
+    }
+
+    .card-image {
+        height: 250px
+    }
+
+    .portfolio-links {
+        margin-top: 120px;
+    }
+}
+
+@media screen and (max-width: 967px) {
+    .svg-frame {
+        visibility: hidden;
+    }
+
+    .experience-technologies {
+        margin: 5px 0 0 80px
+    }
+
+    .portfolio-cards {
+        display: block;
+        margin: 40px;
+    }
+
+    .portfolio-card {
+        margin-top: 50px;
+    }
+
+    .portfolio-links {
+        margin-top: 0;
+    }
+
+    #about-section {
+        display: grid;
+    }
+
+    .about-left {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+    }
+
+    .about-left img {
+        height: 150px;
+        padding: 40px 0;
+    }
+
+    .about-title {
+        grid-column: span 2;
+    }
+
+    .about-description {
+        display: grid;
+        align-items: center;
+    }
+
+    .about-right {
+        width: 90%;
+    }
+
+    .experience-technologies {
+        margin-left: 40%;
+    }
+
+    .resume-sheet > p {
+        display: none;
+    }
+
+    .resume-entry-place {
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    .resume-entry-title {
+        font-size: 15px;
+        font-weight: 300;
+    }
+}
+
+@media screen and (max-width: 765px) {
+
+    .about-title {
+        margin-left: 60px;
+        margin-bottom: 20px;
+    }
+
+    .welcome-section {
+        height: 500px;
+    }
+    .nav-menu {
+        display: none;
+    }
+
+    .welcome-name {
+        font-size: 55px;
+        letter-spacing: .09em;
+    }
+
+    .welcome-title {
+        font-size: 35px;
+        letter-spacing: .02em;
+    }
+}
+
+@media screen and (max-width: 638px) {
+
+    .welcome-header {
+        margin-top: 250px;
+    }
+
+    .svg-frame {
+        display: none;
+    }
+
+    .welcome-background {
+        height: 600px;
+    }
+
+    .welcome-name {
+        font-size: 40px;
+        letter-spacing: .02em;
+    }
+
+    .welcome-title {
+        font-size: 20px;
+    }
+
+    .welcome-section {
+        height: 320px;
+    }
+
+    #about-section {
+        margin: 50px 10px;
+    }
+
+    .about-title {
+        font-size: 30px;
+        grid-column: auto;
+    }
+
+    .about-left {
+        grid-template-columns: 1fr;
+    }
+
+    .about-left img {
+        padding: 10px;
+        height: 90px;
+    }
+
+    .about-description {
+        font-size: 15px;
+    }
+
+    .about-position {
+        font-size: 20px;
+    }
+
+    .about-small-description {
+        font-size: 15px;
+        padding: 0 0 10px 10px;
+        margin: 0;
+    }
+
+    .experience-technologies {
+        margin-left: 10%;
+    }
+
+    #portfolio-section {
+        padding: 20px 50px 50px 50px;
+    }
+
+    #portfolio-section .about-title {
+        margin-left: 0px;
+    }
+
+    .portfolio-cards {
+        margin: 0;
+    }
+
+    .portfolio-links {
+        margin-top: 40px;
+    }
+
+    .resume-icon img{
+        height: 24px;
+        transform: translate(-40px, 15px);
+    }
+
+    .resume-entry-place {
+        font-size: 15px;
+        letter-spacing: 0;
+    }
+
+    .resume-entry-title {
+        font-size: 10px;
+        letter-spacing: 0em;
+    }
+
+    .resume-entry {
+        margin: 20px 0 0 20% !important;  
+    }
+
+    #contact-section {
+        padding: 0;
+        margin: 60px 0 30px 0;
+    }
+
+    .contact-sheet {
+        padding: 0;
+    }
+
+    #clipboard-email {
+        width: 18px;
+        transform: translate(230px, -8px);
+    }
+
+    #clipboard-icon-email {
+        height: 18px;
+    }
+
+    #clipboard-email-words p {
+        font-size: 10px;
+    }
+
+    .clipboard-words-active p {
+        font-size: 10px;
+    }
+
+    .contact-part img {
+        height: 24px;
+    }
+
+    .contact-part p {
+        font-size: 15px;
+        font-weight: 300;
+    }
+}
+
